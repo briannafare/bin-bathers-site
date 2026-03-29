@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <!-- Shield shape -->
+  <path d="M20 8 L20 8 Q20 4 24 4 L56 4 Q60 4 60 8 L60 44 Q60 60 40 72 Q20 60 20 44 Z" fill="#2D8C4E"/>
+  <!-- Shield highlight -->
+  <path d="M22 10 L22 10 Q22 7 25 7 L42 7 L42 44 Q42 56 32 66 Q22 56 22 44 Z" fill="#3AA85E" opacity="0.4"/>
+  <!-- Leaf inside shield -->
+  <path d="M32 20 Q44 16 48 28 Q44 40 32 44 Q28 36 32 20 Z" fill="#FFFFFF" opacity="0.9"/>
+  <!-- Water drop -->
+  <path d="M44 18 Q48 12 52 18 Q52 24 48 26 Q44 24 44 18 Z" fill="#60C4F0"/>
+  <path d="M46 19 Q48 15 50 19 Q50 23 48 24 Q46 23 46 19 Z" fill="#FFFFFF" opacity="0.5"/>
+
+  <!-- BIN text in green -->
+  <text x="74" y="46" font-family="'Rubik', 'Arial Black', sans-serif" font-size="32" font-weight="800" fill="#2D8C4E" letter-spacing="1">BIN</text>
+  <!-- BATHERS text in navy -->
+  <text x="135" y="46" font-family="'Rubik', 'Arial Black', sans-serif" font-size="32" font-weight="800" fill="#1B2A45" letter-spacing="1">BATHERS</text>
+</svg>
