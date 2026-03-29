@@ -1,77 +1,99 @@
 import { motion } from 'framer-motion'
 
 const APPLY_URL = 'sms:14035555555'
+const PHONE = '(403) 555-5555'
 
 export function OperatorHero() {
   return (
-    <section className="bg-[#F2F5F8] py-20 md:py-28">
-      <div className="container-site">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Copy */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#2D8C4E] mb-4">
-              Territory Operators
-            </span>
-            <h1
-              className="font-black text-[#1B2A45] leading-[1.05] mb-6"
-              style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(2.4rem, 6vw, 4rem)' }}
+    <section className="relative overflow-hidden">
+      {/* Full-bleed operator hero image */}
+      <div className="relative min-h-[460px] md:min-h-[540px]">
+        <img
+          src="/images/operator-hero.jpg"
+          alt="Student operator running a bin cleaning territory in Calgary"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1B2A45]/90 via-[#1B2A45]/70 to-[#1B2A45]/20" />
+
+        {/* Content */}
+        <div className="relative z-10 container-site flex items-center min-h-[460px] md:min-h-[540px] py-16">
+          <div className="max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
             >
-              Run Your Own Business This Summer
-            </h1>
-            <p className="text-[#5A6B80] text-lg leading-relaxed mb-8">
-              Limited territories available in Calgary. No experience required — full training, equipment, and marketing provided. Top performers earn $25K–$50K+.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#6CC34A] mb-3">
+                Territory Operators
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1 }}
+              className="font-black text-white leading-[1.05] mb-5"
+              style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(2.2rem, 5.5vw, 3.8rem)' }}
+            >
+              Run Your Own<br />Business This Summer
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.25 }}
+              className="flex items-center gap-2 mb-3"
+            >
+              <div className="h-px flex-1 max-w-[60px] bg-white/30" />
+              <span className="text-white/70 text-sm font-medium">Limited Territories Available</span>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-white/75 text-base leading-relaxed mb-8 max-w-sm"
+            >
+              No experience required — full training, equipment, and marketing provided. Top performers earn $25K–$50K+.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.32 }}
+              className="flex flex-col sm:flex-row gap-3"
+            >
               <a
                 href={APPLY_URL}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#D4A32C] text-white font-bold text-base rounded-full shadow-lg hover:brightness-110 hover:scale-[1.02] transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#2D8C4E] text-white font-bold text-base rounded-lg shadow-lg hover:bg-[#268040] transition-all duration-200"
               >
-                Apply Now
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9H15M10 4L15 9L10 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 3h12a1 1 0 011 1v8a1 1 0 01-1 1H6l-4 3V4a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
                 </svg>
+                Text to Apply Now
               </a>
               <a
-                href="#earnings"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#1B2A45] text-[#1B2A45] font-bold text-base rounded-full hover:bg-[#1B2A45] hover:text-white transition-all duration-200"
+                href={`tel:${PHONE.replace(/\D/g, '')}`}
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/15 backdrop-blur-sm text-white font-bold text-base rounded-lg border border-white/30 hover:bg-white/25 transition-all duration-200"
               >
-                See Earnings
+                {PHONE}
               </a>
-            </div>
-          </motion.div>
-
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
-              <img
-                src="/images/operator-hero.jpg"
-                alt="Young operator with pressure washing equipment on suburban driveway"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A45]/30 to-transparent" />
-            </div>
-            {/* Floating earnings badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
-              className="absolute -bottom-4 -left-4 md:-left-6 bg-[#D4A32C] text-white px-5 py-3 rounded-xl shadow-xl"
-            >
-              <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-0.5">Top Operators Earn</div>
-              <div className="text-xl font-black" style={{ fontFamily: 'Rubik, sans-serif' }}>$25K–$50K+</div>
-              <div className="text-xs opacity-80">per season</div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
+
+        {/* Floating earnings badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="absolute bottom-8 right-6 md:right-12 bg-[#D4A32C] text-white px-5 py-4 rounded-xl shadow-xl"
+        >
+          <div className="text-xs font-bold uppercase tracking-widest opacity-85 mb-0.5">Top Operators Earn</div>
+          <div className="text-2xl font-black" style={{ fontFamily: 'Rubik, sans-serif' }}>$25K–$50K+</div>
+          <div className="text-xs opacity-80">per season</div>
+        </motion.div>
       </div>
     </section>
   )

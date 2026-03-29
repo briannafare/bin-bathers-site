@@ -26,87 +26,72 @@ export function Nav() {
     setIsMobileOpen(false)
   }, [location.pathname])
 
-  const homeLinks = [
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'FAQ', href: '#faq' },
-  ]
-
-  const allLinks = [
-    ...homeLinks,
-    { label: 'Run a Territory', href: '/run-a-territory' },
-  ]
-
-  const navLinks = isHome ? allLinks : [{ label: 'Home', href: '/' }, { label: 'Run a Territory', href: '/run-a-territory' }]
-
   return (
     <>
-      {/* Announcement bar */}
-      <div className="bg-[#2D8C4E] text-white text-center text-sm py-2 px-4 font-medium tracking-wide z-50 relative">
-        Now booking in Calgary →{' '}
-        <a href={BOOKING_URL} className="underline underline-offset-2 font-semibold hover:text-white/80 transition-colors">
-          Schedule your cleaning today
-        </a>
-      </div>
-
       <nav className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100'
-          : 'bg-[#F2F5F8]'
+          ? 'bg-white/97 backdrop-blur-md shadow-md'
+          : 'bg-white shadow-sm'
       }`}>
-        <div className="container-site flex items-center justify-between h-16 md:h-20">
+        <div className="container-site flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
-          <Link to="/" className="flex items-center shrink-0">
-            <img src="/logo.svg" alt="Bin Bathers" className="h-9 md:h-11 w-auto" />
+          <Link to="/" className="flex items-center shrink-0 py-2">
+            <img src="/logo.svg" alt="Bin Bathers" className="h-10 md:h-12 w-auto" />
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              link.href.startsWith('#') ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-[#5A6B80] hover:text-[#1B2A45] transition-colors"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`text-sm font-medium transition-colors ${
-                    location.pathname === link.href
-                      ? 'text-[#2D8C4E] font-semibold'
-                      : 'text-[#5A6B80] hover:text-[#1B2A45]'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
-            ))}
-          </div>
-
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={`tel:${PHONE.replace(/\D/g, '')}`}
-              className="text-sm font-medium text-[#5A6B80] hover:text-[#D4A32C] transition-colors"
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <Link
+              to="/"
+              className={`text-sm font-semibold transition-colors ${
+                isHome ? 'text-[#2D8C4E]' : 'text-[#5A6B80] hover:text-[#1B2A45]'
+              }`}
             >
-              {PHONE}
-            </a>
+              Home
+            </Link>
+            {isHome && (
+              <>
+                <a href="#how-it-works" className="text-sm font-medium text-[#5A6B80] hover:text-[#1B2A45] transition-colors">
+                  How It Works
+                </a>
+                <a href="#pricing" className="text-sm font-medium text-[#5A6B80] hover:text-[#1B2A45] transition-colors">
+                  Pricing
+                </a>
+              </>
+            )}
+            <Link
+              to="/run-a-territory"
+              className={`text-sm font-semibold transition-colors ${
+                !isHome ? 'text-[#2D8C4E]' : 'text-[#5A6B80] hover:text-[#1B2A45]'
+              }`}
+            >
+              Run a Territory
+            </Link>
             <a
               href={BOOKING_URL}
-              className="inline-flex items-center px-6 py-2.5 text-sm font-bold tracking-wide uppercase bg-[#D4A32C] text-white hover:brightness-110 transition-all duration-200 rounded-full shadow-md"
+              className="text-sm font-semibold text-[#5A6B80] hover:text-[#1B2A45] transition-colors hidden lg:block"
             >
-              Book Now
+              Book Cleaning
+            </a>
+          </div>
+
+          {/* Desktop CTA — phone button style like mockup */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href={`tel:${PHONE.replace(/\D/g, '')}`}
+              className="flex items-center gap-2 px-4 py-2 bg-[#2D8C4E] text-white font-bold text-sm rounded-lg hover:bg-[#268040] transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 2h3l1.5 3.5-1.75 1.05A9 9 0 006.45 9.25L7.5 7.5 11 9v3c0 .55-.45 1-1 1C4.42 13 1 9.58 1 5.5c0-.55.45-1 1-1z" fill="currentColor"/>
+              </svg>
+              {PHONE}
             </a>
           </div>
 
           {/* Mobile Hamburger */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
             aria-label="Toggle menu"
           >
             <motion.span
@@ -133,55 +118,61 @@ export function Nav() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed inset-0 z-50 bg-white flex flex-col pt-24 px-8"
+            className="fixed inset-0 z-50 bg-white flex flex-col pt-20 px-8"
           >
             <button
               onClick={() => setIsMobileOpen(false)}
-              className="absolute top-5 right-6 text-3xl text-[#1B2A45] font-light"
+              className="absolute top-5 right-5 text-3xl text-[#1B2A45] font-light w-10 h-10 flex items-center justify-center"
               aria-label="Close menu"
             >
               ×
             </button>
-            <div className="flex flex-col gap-6 mt-4">
-              {allLinks.map((link, i) => (
+            <div className="flex flex-col gap-5 mt-4">
+              {[
+                { label: 'Home', to: '/', isLink: true },
+                { label: 'How It Works', href: '/#how-it-works', isLink: false },
+                { label: 'Pricing', href: '/#pricing', isLink: false },
+                { label: 'FAQ', href: '/#faq', isLink: false },
+                { label: 'Run a Territory', to: '/run-a-territory', isLink: true },
+              ].map((item, i) => (
                 <motion.div
-                  key={link.href}
+                  key={i}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.08 + i * 0.05 }}
+                  transition={{ delay: 0.07 + i * 0.05 }}
                 >
-                  {link.href.startsWith('#') ? (
+                  {item.isLink && item.to ? (
+                    <Link
+                      to={item.to}
+                      className="text-2xl font-bold text-[#1B2A45] hover:text-[#2D8C4E] transition-colors"
+                      style={{ fontFamily: 'Rubik, sans-serif' }}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
                     <a
-                      href={link.href}
+                      href={item.href}
                       onClick={() => setIsMobileOpen(false)}
                       className="text-2xl font-bold text-[#1B2A45] hover:text-[#2D8C4E] transition-colors"
                       style={{ fontFamily: 'Rubik, sans-serif' }}
                     >
-                      {link.label}
+                      {item.label}
                     </a>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className="text-2xl font-bold text-[#1B2A45] hover:text-[#2D8C4E] transition-colors"
-                      style={{ fontFamily: 'Rubik, sans-serif' }}
-                    >
-                      {link.label}
-                    </Link>
                   )}
                 </motion.div>
               ))}
             </div>
-            <div className="mt-auto pb-12 space-y-4">
+            <div className="mt-auto pb-12 space-y-3">
               <a
                 href={BOOKING_URL}
                 onClick={() => setIsMobileOpen(false)}
-                className="block w-full text-center px-8 py-4 text-base font-bold uppercase tracking-wider bg-[#D4A32C] text-white rounded-full shadow-lg"
+                className="block w-full text-center px-8 py-4 text-base font-bold bg-[#2D8C4E] text-white rounded-lg shadow-md"
               >
-                Book Now
+                Book Your Cleaning
               </a>
               <a
                 href={`tel:${PHONE.replace(/\D/g, '')}`}
-                className="block text-center text-lg font-medium text-[#5A6B80]"
+                className="block text-center text-lg font-semibold text-[#2D8C4E]"
               >
                 {PHONE}
               </a>

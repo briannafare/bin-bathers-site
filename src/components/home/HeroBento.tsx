@@ -1,159 +1,125 @@
 import { motion } from 'framer-motion'
 
 const BOOKING_URL = 'https://clienthub.getjobber.com/booking/bin-bathers'
-
-const cellVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.97 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0, scale: 1,
-    transition: { delay: 0.1 + i * 0.1, duration: 0.55, ease: [0.25, 0.1, 0.25, 1] },
-  }),
-}
-
-const words = ['Clean', 'Bins.', 'Fresh', 'Homes.']
+const PHONE = '(403) 555-5555'
 
 export function HeroBento() {
   return (
-    <section className="bg-[#F2F5F8] pb-16 pt-4 md:pt-8 md:pb-20 lg:pb-24">
-      <div className="container-site">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 auto-rows-auto">
+    <section className="relative overflow-hidden">
+      {/* Full-bleed hero image */}
+      <div className="relative min-h-[480px] md:min-h-[560px]">
+        <img
+          src="/images/hero-clean-bins.jpg"
+          alt="Freshly cleaned residential bins on a Calgary driveway"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1B2A45]/85 via-[#1B2A45]/65 to-[#1B2A45]/30" />
 
-          {/* Headline + CTA — 3 cols */}
-          <motion.div
-            custom={0}
-            initial="hidden"
-            animate="visible"
-            variants={cellVariants}
-            className="lg:col-span-3 flex flex-col justify-center p-8 lg:p-12 rounded-2xl bg-[#1B2A45] min-h-[280px]"
-          >
-            <h1
-              className="font-black leading-[1.05] tracking-tight text-white mb-5"
-              style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(2.8rem, 7vw, 5.5rem)' }}
+        {/* Hero content */}
+        <div className="relative z-10 container-site flex items-center min-h-[480px] md:min-h-[560px] py-16">
+          <div className="max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {words.map((word, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + i * 0.12, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="inline-block mr-[0.25em]"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </h1>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#6CC34A] mb-3">
+                Calgary's Bin Cleaning Service
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              className="font-black text-white leading-[1.05] mb-5"
+              style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(2.4rem, 6vw, 4.2rem)' }}
+            >
+              Clean Bins.<br />Fresh Homes.
+            </motion.h1>
+
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.85 }}
-              className="text-white/70 text-lg leading-relaxed mb-8 max-w-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
+              className="text-white/80 text-lg leading-relaxed mb-8 max-w-sm"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
               Professional bin cleaning in Calgary — fast, affordable, and odor-free. No contracts. No hidden fees.
             </motion.p>
+
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="flex flex-col sm:flex-row gap-3"
             >
               <a
                 href={BOOKING_URL}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#D4A32C] text-white font-bold text-base tracking-wide rounded-full shadow-lg hover:brightness-110 hover:scale-[1.02] transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#2D8C4E] text-white font-bold text-base rounded-lg shadow-lg hover:bg-[#268040] hover:scale-[1.02] transition-all duration-200"
               >
-                Book Your Cleaning
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9H15M10 4L15 9L10 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="2" y="3" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+                  <path d="M2 7H16" stroke="currentColor" strokeWidth="1.5"/>
+                  <path d="M6 2V4M12 2V4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
+                Book Your Cleaning
+              </a>
+              <a
+                href={`sms:${PHONE.replace(/\D/g, '')}`}
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/15 backdrop-blur-sm text-white font-bold text-base rounded-lg border border-white/30 hover:bg-white/25 transition-all duration-200"
+              >
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 3h12a1 1 0 011 1v8a1 1 0 01-1 1H6l-4 3V4a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+                </svg>
+                Text Us to Book
               </a>
             </motion.div>
-          </motion.div>
+          </div>
+        </div>
+      </div>
 
-          {/* Hero Image — 2 cols, spans 2 rows on desktop */}
-          <motion.div
-            custom={1}
-            initial="hidden"
-            animate="visible"
-            variants={cellVariants}
-            className="lg:col-span-2 lg:row-span-2 relative min-h-[260px] lg:min-h-[420px] rounded-2xl overflow-hidden"
-          >
-            <img
-              src="/images/hero-clean-bins.jpg"
-              alt="Three freshly cleaned residential bins on a Calgary driveway"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A45]/20 to-transparent" />
-          </motion.div>
-
-          {/* Pricing mini-cards row */}
-          <motion.div
-            custom={2}
-            initial="hidden"
-            animate="visible"
-            variants={cellVariants}
-            className="lg:col-span-3 grid grid-cols-3 gap-3"
-          >
-            {[
-              { bins: '1 Bin', price: '$30', desc: 'Single bin' },
-              { bins: '2 Bins', price: '$55', desc: 'Save $5', highlight: true },
-              { bins: '3 Bins', price: '$75', desc: 'Best value' },
-            ].map((card) => (
-              <a
-                key={card.bins}
-                href="#pricing"
-                className={`group relative p-4 md:p-5 rounded-xl transition-all duration-200 cursor-pointer ${
-                  card.highlight
-                    ? 'bg-[#D4A32C] text-white shadow-md hover:brightness-110'
-                    : 'bg-white border-l-4 border-[#2D8C4E] shadow-sm hover:border-[#D4A32C] hover:-translate-y-0.5'
-                }`}
-              >
-                <div
-                  className={`text-xs font-semibold uppercase tracking-widest mb-1 ${card.highlight ? 'text-white/80' : 'text-[#2D8C4E]'}`}
-                >
-                  {card.bins}
-                </div>
-                <div
-                  className={`text-2xl font-black ${card.highlight ? 'text-white' : 'text-[#1B2A45]'}`}
-                  style={{ fontFamily: 'Rubik, sans-serif' }}
-                >
-                  {card.price}
-                </div>
-                <div className={`text-xs mt-1 ${card.highlight ? 'text-white/70' : 'text-[#5A6B80]'}`}>
-                  {card.desc}
-                </div>
-              </a>
-            ))}
-            <div className="col-span-3">
-              <p className="text-xs text-[#5A6B80] text-center mt-2">
-                Simple, transparent pricing. Just pick your bins.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Trust badges */}
-          <motion.div
-            custom={3}
-            initial="hidden"
-            animate="visible"
-            variants={cellVariants}
-            className="lg:col-span-3"
-          >
-            <div className="flex flex-wrap gap-2">
+      {/* Pricing strip below hero */}
+      <div className="bg-white border-b border-gray-200 shadow-sm">
+        <div className="container-site py-5">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <p className="text-sm font-semibold text-[#5A6B80] uppercase tracking-wider shrink-0">
+              Simple, Transparent Pricing
+            </p>
+            <div className="flex-1 grid grid-cols-3 gap-3 sm:gap-4">
               {[
-                { icon: '🌿', label: 'Eco-Friendly Cleaning' },
-                { icon: '📍', label: 'Locally Owned & Operated' },
-                { icon: '⚡', label: 'Fast & Reliable Scheduling' },
-              ].map((badge) => (
-                <div
-                  key={badge.label}
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm text-sm font-medium text-[#1B2A45]"
+                { bins: '1 Bin', price: '$30' },
+                { bins: '2 Bins', price: '$55' },
+                { bins: '3 Bins', price: '$75' },
+              ].map((item) => (
+                <a
+                  key={item.bins}
+                  href="#pricing"
+                  className="group flex flex-col items-center py-3 px-2 rounded-lg border-2 border-gray-200 hover:border-[#2D8C4E] hover:bg-[#F0FAF4] transition-all duration-200 text-center"
                 >
-                  <span>{badge.icon}</span>
-                  {badge.label}
-                </div>
+                  <span className="text-xs font-semibold uppercase tracking-wide text-[#5A6B80] group-hover:text-[#2D8C4E]">
+                    {item.bins}
+                  </span>
+                  <span
+                    className="text-2xl font-black text-[#1B2A45]"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {item.price}
+                  </span>
+                </a>
               ))}
             </div>
-          </motion.div>
-
+            <a
+              href={BOOKING_URL}
+              className="shrink-0 px-6 py-3 bg-[#2D8C4E] text-white font-bold text-sm rounded-lg hover:bg-[#268040] transition-colors"
+            >
+              Book Now
+            </a>
+          </div>
+          <p className="text-xs text-[#5A6B80] text-center mt-3">
+            No contracts. No hidden fees. Just clean bins whenever you need them.
+          </p>
         </div>
       </div>
     </section>
