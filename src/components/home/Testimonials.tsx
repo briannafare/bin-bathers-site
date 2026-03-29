@@ -30,7 +30,7 @@ export function Testimonials() {
               <div className="text-6xl text-[#2D8C4E]/20 font-serif leading-none mb-2">"</div>
 
               <blockquote className="text-[#1B2A45] text-lg leading-relaxed font-medium mb-6" style={{ fontFamily: 'Rubik, sans-serif' }}>
-                New to the neighborhood? So are we. We're a Calgary-born team on a mission to make bin day the best day of the week. Book your first cleaning and see why our customers keep coming back.
+                Just launched in Calgary, and growing fast. Your first cleaning tells the whole story — fresh bins, done while you were at work, for less than the cost of lunch. We'll see you on the next bin day.
               </blockquote>
 
               <div className="flex items-center justify-center gap-3">

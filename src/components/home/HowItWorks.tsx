@@ -29,13 +29,14 @@ export function HowItWorks() {
     <section id="how-it-works" className="py-16 md:py-24 bg-[#F2F5F8]">
       <div className="container-site">
         <FadeInOnScroll className="text-center mb-12">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#2D8C4E] mb-3">How It Works</span>
           <h2
             className="font-black text-[#1B2A45] mb-2"
             style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)' }}
           >
-            Simple, Transparent Pricing
+            Three Steps to Fresh Bins
           </h2>
-          <p className="text-[#5A6B80] text-base">Three steps to fresh bins — no hassle, no contracts</p>
+          <p className="text-[#5A6B80] text-base">Your only job is leaving your bins out. We handle everything else.</p>
         </FadeInOnScroll>
 
         {/* Steps row with arrows */}

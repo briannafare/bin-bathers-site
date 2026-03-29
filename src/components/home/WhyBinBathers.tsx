@@ -4,23 +4,23 @@ import { NoseStrike, LeafDrop, DollarSimple, MapPinSimple } from '../icons/BinIc
 const cards = [
   {
     icon: <NoseStrike />,
-    title: 'No More Bin Day Dread',
-    desc: "You know the smell. That wave of hot garbage when you open the lid in July. We eliminate it — and the bacteria, mold, and pests that come with it.",
+    title: 'Open your bin without holding your breath',
+    desc: "You deserve to not dread bin day. Your bins get pressure washed inside and out — grime, bacteria, mold, and odor gone. Not masked. Gone.",
   },
   {
     icon: <LeafDrop />,
-    title: 'Eco-Friendly Process',
-    desc: "We use high-pressure hot water cleaning — no harsh chemicals entering your yard, driveway, or the storm drain. Effective AND responsible.",
+    title: 'Hot water only. No chemicals.',
+    desc: "High-pressure hot water is all it takes. Nothing harsh goes onto your driveway, into your yard, or down the storm drain. Effective AND responsible.",
   },
   {
     icon: <DollarSimple />,
-    title: 'Actually Affordable',
-    desc: "Starting at $30 per bin with no contracts or recurring fees. Book when you need it. Skip when you don't. Your call.",
+    title: 'Starting at $30. No contracts.',
+    desc: "Book once, book monthly, book whenever. You're never locked in. Pay only when you book, only for what you need.",
   },
   {
     icon: <MapPinSimple />,
-    title: 'We Come to You',
-    desc: "Curbside service on your schedule. You don't lift a finger — or a lid.",
+    title: 'You don\'t lift a finger.',
+    desc: "Leave your empty bins curbside. Your team arrives, cleans, and returns them — while you're at work, running errands, or doing literally anything else.",
   },
 ]
 
@@ -39,16 +39,19 @@ export function WhyBinBathers() {
 
       <div className="container-site relative z-10">
         <FadeInOnScroll className="text-center mb-16">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#2D8C4E] mb-3">Why Us</span>
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#2D8C4E] mb-3">Why It Works</span>
           <h2
             className="font-black text-white"
             style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
           >
-            Why Calgary Homeowners Choose Bin Bathers
+            Clean bins. No chemicals. No commitment.
           </h2>
+          <p className="text-white/50 mt-3 max-w-lg mx-auto text-base">
+            The way it should have been done all along.
+          </p>
         </FadeInOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
           {cards.map((card, i) => (
             <FadeInOnScroll key={card.title} delay={i * 0.1}>
               <div className="flex gap-5 p-7 rounded-2xl bg-white/[0.06] border border-white/10 hover:bg-white/[0.09] transition-colors duration-300">
@@ -65,6 +68,15 @@ export function WhyBinBathers() {
             </FadeInOnScroll>
           ))}
         </div>
+
+        <FadeInOnScroll className="text-center" delay={0.2}>
+          <a
+            href="https://clienthub.getjobber.com/booking/bin-bathers"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#2D8C4E] text-white font-bold text-base rounded-lg shadow-xl hover:bg-[#268040] transition-all duration-200"
+          >
+            Book your first cleaning →
+          </a>
+        </FadeInOnScroll>
       </div>
     </section>
   )

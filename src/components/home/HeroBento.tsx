@@ -34,9 +34,10 @@ export function HeroBento() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="font-black text-white leading-[1.05] mb-5"
-              style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(2.4rem, 6vw, 4.2rem)' }}
+              style={{ fontFamily: 'Rubik, sans-serif', fontSize: 'clamp(2.2rem, 5.5vw, 4rem)' }}
             >
-              Clean Bins.<br />Fresh Homes.
+              Your bins are the dirtiest thing on your property.<br />
+              <span className="text-[#6CC34A]">We fix that. Starting at $30.</span>
             </motion.h1>
 
             <motion.p
@@ -46,7 +47,7 @@ export function HeroBento() {
               className="text-white/80 text-lg leading-relaxed mb-8 max-w-sm"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              Professional bin cleaning in Calgary — fast, affordable, and odor-free. No contracts. No hidden fees.
+              Calgary's professional bin cleaning service. You leave your bins out — we pressure wash away the grime, bacteria, and smell. No contracts. Done in minutes.
             </motion.p>
 
             <motion.div

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { useEffect } from 'react'
 import { Home } from './pages/Home'
 import { RunATerritory } from './pages/RunATerritory'
+import { AnnouncementBar } from './components/layout/AnnouncementBar'
 import { Nav } from './components/layout/Nav'
 import { Footer } from './components/layout/Footer'
 
@@ -16,6 +17,7 @@ function ScrollToTop() {
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <AnnouncementBar />
       <Nav />
       <main>{children}</main>
       <Footer />
